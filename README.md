@@ -36,9 +36,10 @@ The dataset is sourced from [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/cre
 
 
 | Table 1 Average Computational Time for Different Encryption Methods |
-|------------------------|--------------------------|--------------------------|
-| **Encryption Methods** | **No Encryption**        | **Encryption with CKKS** | **Encryption with Paillier** |
-| **Time(s)**           | 124.0 (9.2)              | 126.0 (8.5)              | 6626.1 (57.1)                |
+|----------------------------------|------------------|--------------------------|-----------------------------|
+| **Encryption Methods**           | No Encryption   | Encryption with CKKS     | Encryption with Paillier    |
+| **Time(s)**                      | 124.0 (9.2)     | 126.0 (8.5)              | 6626.1 (57.1)               |
+
 
 Table 4 presents the average computational costs for various encryption methods. The first value indicates the average computational time, and the value in parentheses indicates the variance. The results show that CKKS introduces only a 6% overhead in time compared to the unencrypted scenario, with an average time of 126.0 seconds—just 2 seconds more than the non-encrypted baseline of 124.0 seconds. In contrast, Paillier encryption incurs substantially higher overhead, averaging 6626.1 seconds. The efficiency of CKKS arises from its support for vectorized operations, whereas Paillier lacks this capability, relies on sequential processing, and does not natively support floating-point data types.
 
