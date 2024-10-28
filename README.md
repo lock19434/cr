@@ -34,15 +34,12 @@ The dataset is sourced from [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/cre
 
 ## Experiment Results
 
-![Comparing the Cost of Encryption: Paillier, CKKS, and No Encryption](./image/Comparing%20the%20Cost%20of%20Encryption.png)
 
-The figure shows a comparison of training time between Paillier, CKKS, and no encryption. As can be seen, the training time for the no encryption approach is almost zero, CKKS encryption slightly increases the time but still remains close to the no encryption scheme, while Paillier encryption significantly increases the training time to around 6000 seconds.
+| Table 1 Average Computational Time for Different Encryption Methods |
+|------------------------|--------------------------|--------------------------|
+| **Encryption Methods** | **No Encryption**        | **Encryption with CKKS** | **Encryption with Paillier** |
+| **Time(s)**           | 124.0 (9.2)              | 126.0 (8.5)              | 6626.1 (57.1)                |
 
-**Why is there such a large gap between CKKS and Paillier?**
 
-The main difference between CKKS and Paillier lies in how they handle data. CKKS is a homomorphic encryption scheme that supports vectorized operations, meaning it can encrypt and compute on an entire batch of data simultaneously. This significantly boosts efficiency. During homomorphic computation, CKKS allows for addition, multiplication, and other operations directly on encrypted vectors, resulting in relatively low computational overhead.
-
-On the other hand, Paillier homomorphic encryption can only perform addition on single encrypted values and does not support vectorized operations. Every operation requires processing each individual ciphertext, which leads to a much higher computational cost, especially when handling large datasets.
-
-Thus, CKKS's ability to support vector operations and its efficiency in computation help keep the time cost low while ensuring data privacy, whereas Paillier's limitations result in a significant increase in computation time.
+- Table 4 presents the average computational costs for various encryption methods. The first value indicates the average computational time, and the value in parentheses indicates the variance. The results show that CKKS introduces only a 6% overhead in time compared to the unencrypted scenario, with an average time of 126.0 seconds—just 2 seconds more than the non-encrypted baseline of 124.0 seconds. In contrast, Paillier encryption incurs substantially higher overhead, averaging 6626.1 seconds. The efficiency of CKKS arises from its support for vectorized operations, whereas Paillier lacks this capability, relies on sequential processing, and does not natively support floating-point data types.
 
